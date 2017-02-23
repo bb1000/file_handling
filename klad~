@@ -1,0 +1,52 @@
+```
+>>> file = raw_input("Which inputfile? ") #Answer: allherbs.knx
+>>> if "." in file:
+       file = file[:file.find(".")]
+>>> inp = open(file+".knx",'r')
+>>> outas = open(file+".asx",'w')
+>>> outob = open(file+".obx",'w')
+
+```
+
+The 'r' points at a file aimed only to be read, while 'w' is aimed only for writing.  
+
+Miraculix can then read line per line...
+
+```
+>>> line = inp.readline()
+>>> while "Herb" not in line:
+>>> 	  line = inp.readline()
+>>> for line in file:
+>>>       line = inp.readline()
+>>>       if (str(line[:5])) is "aster":
+>>>             outas.write(line[7:12])
+>>>       if (str(line[:5])) is "obeli":
+>>>             outob.write(line[7:12])
+
+```
+ 
+Since Miraculix 'opened' the file, it is also important to close it again. Writing only proceeds fysically when the file is closed.
+
+```
+>>> inp.close()
+>>> outas.close()
+>>> outob.close()
+
+```
+
+
+
+
+
+
+... and can write line per line...
+
+```
+>>> outas.write("Asterix loves herbs\n")
+>>> outob.write("Obelix doesn\'t get herbs\n")
+
+```
+
+---
+
+## Example from Back in the Day
