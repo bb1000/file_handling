@@ -1,11 +1,15 @@
 #!python
-file="allherbs_2"
+file=raw_input("Which inputfile? ")
 
-#file = raw_input("Which inputfile? ")
-#if "." in file:
-#     file = file[:file.find(".")]
+if "." in file:
+     file = file[:file.find(".")]
 
-inp = open(file+".knx",'r')
+try:
+     inp= open(file+".knx",'r')
+except:
+     print 'File cannot be opened:', file+".knx"
+     exit()
+
 outas = open(file+".asx",'w')
 outob = open(file+".obx",'w')
 
@@ -31,10 +35,10 @@ while number < totnumb:
      line = inp.readline()
      number = number + 1
      spacepos = line.find(' ')
-     if (str(line[:spacepos-1])) == "asterix":
+     if (line[:spacepos-1]) == "asterix":
 #            outas.write(str(line[spacepos+1:]))
              outas.write(line[spacepos+1:])
-     if (str(line[:spacepos-1])) == "obelix":
+     if (line[:spacepos-1]) == "obelix":
 #            outob.write(str(line[spacepos+1:]))
              outob.write(line[spacepos+1:])
 

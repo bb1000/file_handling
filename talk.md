@@ -111,7 +111,44 @@ Which inputfile?
 
 ```
 
-Miraculix can write then `allherbs.knx`. The only part which is important is the one in front of the ".". Remark that the name of the file is like an array and that only from element "0" until (but not including) the "." is retained.   
+Miraculix can write then `allherbs` to get the `allherbs.knx` file analyzed.
+
+Imagine now that Miraculix gives a name of a file which does not exist. The program breaks. Therefore, a test can be built in.
+
+<!--
+file=raw_input("Which inputfile? ")
+inp= open(file+".knx",'r')
+
+Errormessage:
+Which inputfile? somethingelse
+Traceback (most recent call last):
+  File "program_space_endline_input", line 8, in <module>
+    inp= open(file+".knx",'r')
+IOError: [Errno 2] No such file or directory: 'somethingelse.knx'
+-->
+
+```
+>>> try:
+>>>   inp= open(file+".knx",'r')
+>>> except:
+>>>   print 'File cannot be opened:', file+".knx"
+>>>   exit()
+
+```
+
+When a file is given in which does not exist, simply message is given out and the program terminates.
+
+```
+Which inputfile? somethingelse
+File cannot be opened: somethingelse.knx
+
+```
+
+---
+
+## Common part in the name
+
+The only part which is important is the one in front of the ".". Remark that the name of the file is like an array and that only from element "0" until (but not including) the "." is retained.   
 
 ```
 >>> if "." in file:
@@ -198,3 +235,8 @@ lpg
 
 ---
 
+## References
+
+"Python for Data Analysis", Wes McKinney, O'Reilly Media, Sebastopol, CA: 2013
+
+"Python for Informatics", Charles Severance, 2013, http://www.pythonlearn.com/book.php#python-for-informatics
