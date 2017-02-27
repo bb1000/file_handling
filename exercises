@@ -1,0 +1,12 @@
+1) Write a program which copies a textfile 'text' to a textfile 'backup'.
+
+2) Write a program which reads ten names from an interactive input and writes does on an external textfile.
+
+3) Write a program which adds a number to an external file of numbers.
+
+4) A file is called ordered if there is a order defined on the data given in the file and if these data are ordered in an ascending order. Imagine that on the two ordered files f and g each number is given on one line. Write a program which merges f and g to one newly ordered file h.
+
+5) Write a program which says whether a string of maximal 40 characters is a palindrome (e.g. ' A man, a plan, a canal: Panama'). The length of the string is not read in on before. 
+
+6) Write a program which writes a text on the screen, taking into account the line-partition and a screen width of 70 characters. The number of characters and the number of lines in the text file are counted.
+ 
