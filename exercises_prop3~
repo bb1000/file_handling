@@ -1,0 +1,28 @@
+-1. Write a program which adds a user defined number to an external file of numbers.
+
+0. A file is called ordered if there is a order defined on the data given in the file and if these data are ordered in an ascending order. Imagine that on the two ordered files f and g each number is given on one line. Write a program which merges f and g to one newly ordered file h.
+
+1. 
+
+1. Write a script that interactively creates an address book. The program should ask for your name and email address, and then save this data in one or two lists, as long as you do not finish the program by typing '0'. At the output, the program is to list the names created in alphabetical order and the corresponding email addresses.
+
+2. Write a script that asks for any number and repeats the query until the user enters the word "quit". The rogram should print the average of the entered numbers and the standard deviation.
+
+3. Write a script that will return as many numbers in the Fibonacci sequence as the user will ask.
+
+4. Make a program that retrieves any number list and prints the same list without repeating items, such as [1,2,1,3,3,4,2,5,5,6] --> [1,2,3,4,5,6]
+
+5. A pangram is a sentence which contains all the letters of the alphabet at least once. An example is "The quick brown fox jumps over the lazy dog". Write a program to check if a sentence is a pangram. Print also in a list how many times a letter is used.
+
+6. Write a script that asks for any sentence. The script analyzes typographic typographical errors. If the third or last letter of a word in a sentence is large, eg '' Felix eaTs micE and Two pigeonS.'', the program marks the word in capital letters, ie ''Felix EATS MICE and Two PIGEONS '' and prints the modified sentence again at the output.
+
+7. Write a program that generates random amino acid sequences and writes them in the form of fasta files (the first line is a title, the rest contains a sequence of max. 70 characters in each line). The amino acids are represented by one letter:
+
+amin = {"A": "Ala" , "C": "Cys", "D": "Asp", "E": "Glu", "F": "Phe" , "G": "Gly", "H": "His", "I": "Ile" , "K": "Lys" , "L": "Leu", "M": "Met","N": "Asn", "P": "Pro", "Q": "Gln", "R": "Arg", "S": "Ser" , "T": "Thr" , "V": "Val" , "W": "Trp", "Y": "Tyr"}
+
+The user specifies how many program files are to be generated and which random sequence length is to be stored in them, eg 3 random sequences = 3 files: sek1.fasta, sek2.fasta, sek3.fasta.
+
+8. Write a program which analyses files in pdb format. Knowing that the lines in the file beginning with the keyword '' HETATM '' contain the coordinates of the solvent or ion molecules, check that the structure contains copper, magnesium, zinc, sodium or calcium ions. If so, the program should print out the coordinates of those ions shifted by random vector [x, y, z] where x, y, z $ \in \langle 0, 5 \rangle $.
+
+9. Write a program which analyses files in pdb format. The program loads the coordinates of the atoms of the protein molecule and writes them in xyz format to the protein.xyz file (the lines starting with '' ATOM '') as well as the coordinates of all other atoms in the structure (lines starting with ''HETATM'') to ''other_residues.xyz ''.
+
