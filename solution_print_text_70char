@@ -1,4 +1,4 @@
-input_string = open("file_test","r")
+input_string = open("file_story","r")
 
 lim=70
 for s in input_string.read().split("\n"):

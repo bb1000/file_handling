@@ -1,17 +1,19 @@
 #!python
-file=raw_input("Which inputfile? ")
+#import sys
+file1=input("Which inputfile? ")
 
-if "." in file:
-     file = file[:file.find(".")]
+if "." in file1:
+     file1 = file1[:file1.find(".")]
 
 try:
-     inp= open(file+".knx",'r')
+     inp= open(file1+".knx",'r')
 except:
-     print 'File cannot be opened:', file+".knx"
+     print ('File cannot be opened:', file1+".knx")
+#     sys.stderr.write('File cannot be opened:')
      exit()
 
-outas = open(file+".asx",'w')
-outob = open(file+".obx",'w')
+outas = open(file1+".asx",'w')
+outob = open(file1+".obx",'w')
 
 totnumb = 0
 
@@ -40,7 +42,9 @@ while number < totnumb:
              outas.write(line[spacepos+1:])
      if (line[:spacepos-1]) == "obelix":
 #            outob.write(str(line[spacepos+1:]))
-             print("Boe")
+             print("Boe", sys.stderr)
+#             sys.stdout.write("Boe \n")
+#             sys.stderr.write("None \n")
              outob.write(line[spacepos+1:])
 
 inp.close()

@@ -1,5 +1,5 @@
 #!python
-file=raw_input("Which inputfile? ")
+file=input("Which inputfile? ")
 
 if "." in file:
      file = file[:file.find(".")]
@@ -7,7 +7,7 @@ if "." in file:
 try:
      inp= open(file+".knx",'r')
 except:
-     print 'File cannot be opened:', file+".knx"
+     print ('File cannot be opened:', file+".knx")
      exit()
 
 outas = open(file+".asx",'w')
@@ -40,7 +40,6 @@ while number < totnumb:
              outas.write(line[spacepos+1:])
      if (line[:spacepos-1]) == "obelix":
 #            outob.write(str(line[spacepos+1:]))
-             print("Boe")
              outob.write(line[spacepos+1:])
 
 inp.close()

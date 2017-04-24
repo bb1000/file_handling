@@ -113,6 +113,12 @@ Which inputfile?
 
 Miraculix can write then `allherbs` to get the `allherbs.knx` file analyzed.
 
+Remark: In `python2`, `raw_input()` delivers a string, while `input()` considers the input as an expression. In `python3`, `raw_input()` does not exist and `input()` takes over the meaning of the old `raw_input()`. When therefore the input has to considered as an expression, `eval(input())` has to be used.  
+
+---
+
+## Choice of input file
+
 Imagine now that Miraculix gives a name of a file which does not exist. The program breaks. Therefore, a test can be built in.
 
 <!--
@@ -235,8 +241,80 @@ lpg
 
 ---
 
+## Some other type of printing
+
+We know already
+
+```
+>>> file="obelix_dog"
+>>> inp= open(file,'w')
+>>> inp.write("Idefix")
+>>> inp.close()
+
+```
+
+It is also possible to say
+
+```
+>>> inp= open(file,'w')
+>>> print("Idefix",file=inp)
+>>> inp.close()
+```
+
+---
+
+## The sys-module and some easy way of input
+
+`argv` contains the vector of arguments passed to a program via the command line. `argv[0]` is the filename of the program, `argv[1]` is then the first argument given, `argv[2]` the second etc. `argv` has to be imported from the module `sys`.
+
+Imagine that a program `program_test.py` contains two lines of code:
+
+```
+from sys import argv
+print(argv)
+```
+
+The output of `python program_test.py` is then
+
+```
+['program_test.py', 'a', 'b']
+```
+
+argv[0] contains then the name `program_test.py`, argv[1] and argv[2] contain `a` and `b`, respectively.
+
+---
+
+## The sys-module and some safe way of input
+
+Miraculix made a program `healthy_herb.py` which says whether or not a herb is safe to be eaten or not. As input parameters, the program needs to know the color of the herb as well as its sites in the forest:
+
+`python healthy_herb.py green river`
+
+To make sure that his collaborators provide these from the beginning, Miraculix hard coded a small test:       
+
+```
+from sys import argv
+if len(argv) != 3 :
+   print ("Usage: python healthy_herb.py color place")
+   exit()
+
+```
+
+Of course, in the code, the arguments still have to be defined:
+
+```
+color = argv[1]
+place = argv[2]
+
+```
+
+---
+
 ## References
 
 "Python for Data Analysis", Wes McKinney, O'Reilly Media, Sebastopol, CA: 2013
 
 "Python for Informatics", Charles Severance, 2013, http://www.pythonlearn.com/book.php#python-for-informatics
+
+http://www.pythonforbeginners.com
+
