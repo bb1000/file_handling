@@ -106,7 +106,7 @@ Finally, all files are closed. The writing only occurs at the moment of closing.
 Imagine Kaningentix didn't have only the file allherbs.knx, but also alldiseases.knx and allforces.knx. Miraculix likes to have a program in which he can decide upon the file to be decomposed.
 
 ```
->>> file = input("Which inputfile? ")
+>>> file = raw_input("Which inputfile? ")
 Which inputfile?
 
 ```
@@ -137,7 +137,7 @@ IOError: [Errno 2] No such file or directory: 'somethingelse.knx'
 >>> try:
 >>>   inp= open(file+".knx",'r')
 >>> except:
->>>   print ('File cannot be opened:', file+".knx")
+>>>   print 'File cannot be opened:', file+".knx"
 >>>   exit()
 
 ```
