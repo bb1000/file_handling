@@ -1,14 +1,16 @@
-1. Write a program which adds a user defined number to an external file of numbers.
+1.(a) Write a program which asks the user for a number, make the sum with '42', and add the original number as well as the result of the sum to an external file of numbers (one number per line). [E,C,A]
 
-2. A file is called ordered if there is a order defined on the data given in the file and if these data are ordered in an ascending order. Imagine that on the two ordered files f and g each number is given on one line. Write a program which merges f and g to one newly ordered file h.
+1.(b) Give the name of the output file of 1.(a) an extension like ".e1". Calculate the average of all numbers in this file and write the output to a file with extension ".e2". [E,C,A]
 
-3. Write a program which writes a text on the screen (name: file_test), taking into account the line-partition and a screen width of 70 characters. 
+2. A file is called ordered if there is an order defined on the data given in the file and if these data are ordered in an ascending order. Imagine that on the two ordered files f and g each number is given on one line. Write a program which merges f and g to one newly ordered file h. [A]
+
+3. Write a program which writes a text on the screen (name: 3_given_file_story), taking into account the line-partition and a screen width of 70 characters. [C,A]
 
 4. Write a script that interactively creates an address book. The program should ask for your name and email address, and then save this data in one or two lists, as long as you do not finish the program by typing '0'. At the output, the program is to list the names created in alphabetical order and the corresponding email addresses.
 
-5. Write a script that asks for any number and repeats the query until the user enters the word "quit". The rogram should print the average of the entered numbers and the standard deviation.
+5. Write a script that asks for any number and repeats the query until the user enters the word "quit". The rogram should print the average of the entered numbers.
 
-6. Write a script that will return as many numbers in the Fibonacci sequence as the user will ask.
+6. Write a script that will return as many numbers in the Fibonacci sequence (on different lines on screen) as the user will ask. [A]
 
 7. Make a program that retrieves any number list and prints the same list without repeating items, such as [1,2,1,3,3,4,2,5,5,6] --> [1,2,3,4,5,6]
 

@@ -113,12 +113,7 @@ Which inputfile?
 
 Miraculix can write then `allherbs` to get the `allherbs.knx` file analyzed.
 
-Remark: In `python3`, `input()` delivers a string. When an integer or float number is expected as input, `int(input())` or `float(input())`, respectively, can be used. For an expression, `eval(input())` has to be reverted to.   
-
-<!--
 Remark: In `python2`, `raw_input()` delivers a string, while `input()` considers the input as an expression. In `python3`, `raw_input()` does not exist and `input()` takes over the meaning of the old `raw_input()`. When therefore the input has to considered as an expression, `eval(input())` has to be used.  
--->
-
 
 ---
 
@@ -262,64 +257,6 @@ It is also possible to say
 >>> print("Idefix",file=inp)
 >>> inp.close()
 ```
-
----
-
-## Some other type of printing
-
-It should be known that `inp.write()` only works when a `string` is written out:
-
-```
->>> file="obelix_wporcs"
->>> inp= open(file,'w')
->>> number= 5
->>> inp.write(str(number))
-```
-
-or
-
-<!--
->>> inp.write("%d \n" % number)
--->
-
-
-```
->>> inp.write("%d \n" % number)
-```
-
-Finally, the `open` function can have three options: read ('r'), write ('w') - and append ('a'). In the latter case, the extra output is written at the end of the file.  
-
----
-
-## How to read strings and numbers?
-
-In a file, Asterix keeps tracks of his weapons:
-
-```
->>> cat weapons.asx
-knife: 4
-spear: 2
-arrow: 3
-fist: 2
-
-```
-
-The total sum of his weapons is given by `readlines()` followed by a `split()` of each line.
-
-```
->>> inp=open("weapons.asx",'r')
->>> lines = inp.readlines()
->>> number = 0
->>> for line in lines:
->>>     number = number + int(line.split()[1])
->>> print(number)
-11
-
-```
-
-`split()`, which standard separates parts of a line by a space, gives access to a list. Remark that `line.split()` is default known as a string.
-
-The opposite is `join()`: when `l` is a list of words, `" ".join(l)` gives a sentence in which the words are separated by spaces.   
 
 ---
 
