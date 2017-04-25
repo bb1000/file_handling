@@ -166,38 +166,41 @@ The only part which is important is the one in front of the ".". Remark that the
 
 ---
 
-## Reading until end of line
+## Reading until space
 
-It makes not much sense to use the program above, since e.g. the herbs should have names which have all the exact same length. In the example of Miraculix, each line (and therefore the name of the herb) ends on another space or on a hard enter.
-
-<!--
-     if (line[:5]) == "aster":
-            outas.write(line[7:]+"\n")
-     if (line[:5]) == "obeli":
-            outob.write(line[7:]+"\n")
--->
+In the program above, the input file is read based upon the number of characters - which also meant that Asterix was abbreviated to `aster` and Obelix to `obeli`. It would have been better to read until the first space. 
 
 ```
->>>     if (line[:5]) == "aster":
->>>           outas.write(line[7:])
->>>     if (line[:5]) == "obeli":
->>>           outob.write(line[7:])
-	       
+>>> while number < totnumb:
+>>>     line = inp.readline()
+>>>     number = number + 1
+>>>     spacepos = line.find(' ')
+>>>     if (line[:spacepos-1]) == "aster":
+>>>           outas.write(line[spacepos+1:12]+"\n")
+>>>     if (line[:spacepos-1]) == "obeli":
+>>>           outob.write(line[spacepos+1:12]+"\n")
+
 ```
 
 ---
 
-## Reading until space
+## Reading until end of line
 
-In the program above, the name of the Celt is read based upon the number of characters - which meant that Asterix was abbreviated to `aster` and Obelix to `obeli`. It would have been better to read until the first space. 
+Still it makes not much sense to use the program above, since the herbs should have names which have all the exact same length. In the example of Miraculix, each line (and therefore the name of the herb) ends on another space or on a hard enter.
+
+<!--
+     if (line[:spacepos-1]) == "aster":
+            outas.write(line[spacepos+1:]+"\n")
+     if (line[:spacepos-1]) == "obeli":
+            outob.write(line[spacepos+1:]+"\n")
+-->
 
 ```
->>>     spacepos = line.find(' ')
->>>     if (line[:spacepos-1]) == "asterix":
->>>           outas.write(line[spacepos+1:])
->>>     if (line[:spacepos-1]) == "obelix":
->>>           outob.write(line[spacepos+1:])
-
+>>>      if (line[:spacepos-1]) == "aster":
+>>>            outas.write(line[spacepos+1:])
+>>>      if (line[:spacepos-1]) == "obeli":
+>>>            outob.write(line[spacepos+1:])
+	       
 ```
 
 ---
