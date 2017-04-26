@@ -17,7 +17,7 @@ layout: false
 Imagine researcher Miraculix has a student Kaningentix, who has called all his datafiles with a suffix .knx The first task is then to reduce the title to its essentials. Miraculix has to split out the herbs for Asterix and Obelix with suffix .asx and .obx
 
 ```
->>> cat allherbs.knx
+$ cat allherbs.knx
 Creator of file: Kaningentix
 First test
 Herbs Celts
@@ -212,7 +212,7 @@ In the program above, the name of the Celt is read based upon the number of char
 In this way, the input could be
 
 ```
->>> cat allherbs_2.knx
+$ cat allherbs_2.knx
 Creator of file: Kaningentix
 First test
 Herbs Celts
@@ -227,7 +227,7 @@ obelix: lpg
 ... and Miraculix will get ...
 
 ```
->>> cat allherbs_2.asx
+$ cat allherbs_2.asx
 petraoleum
 cyanine
 diesel
@@ -235,7 +235,7 @@ diesel
 ```
 
 ```
->>> cat allherbs_2.obx
+$ cat allherbs_2.obx
 kerosine
 lpg
 
@@ -296,7 +296,7 @@ Finally, the `open` function can have three options: read ('r'), write ('w') - a
 In a file, Asterix keeps tracks of his weapons:
 
 ```
->>> cat weapons.asx
+$ cat weapons.asx
 knife: 4
 spear: 2
 arrow: 3
