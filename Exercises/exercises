@@ -2,7 +2,7 @@
 
 1.(b) Give the name of the output file of 1.(a) an extension like ".e1". Calculate the average of all numbers in this file and write the output to a file with extension ".e2". [E,C,A]
 
-2. A file is called ordered if there is an order defined on the data given in the file and if these data are ordered in an ascending order. Imagine that on the two ordered files f and g each number is given on one line (a number only appears once). Write a program which merges f and g to one newly ordered file h. [C,A]
+2. A file is called ordered if there is an order defined on the data given in the file and if these data are ordered in an ascending order. Imagine that on the two ordered files f and g each number is given on one line (a number only appears once in this exercise; f and g may contain different amount of numbers). Write a program which merges f and g to one newly ordered file h. [C,A]
 
 3. Write a program which writes a text on the screen (name: 3_given_file_story), taking into account the line-partition and a screen width of 70 characters. [C,A]
 
@@ -20,8 +20,8 @@ amin = {"A": "Ala" , "C": "Cys", "D": "Asp", "E": "Glu", "F": "Phe" , "G": "Gly"
 
 The user specifies how many program files are to be generated and which random sequence length is to be stored in them, eg 3 random sequences = 3 files: sek1.fasta, sek2.fasta, sek3.fasta. The user also specifies the length of the random sequence. To work with random numbers, use `import random` and `random.choice()`. [A]
 
-9. Write a program which analyses files in pdb format. The program loads the coordinates of the atoms of the protein molecule and writes them in xyz format to the protein.xyz file (the lines starting with '' ATOM ''). The coordinates of all other atoms in the structure (lines starting with ''HETATM'') are written to ''other_residues.xyz ''. [E,C,A]
+9. Write a program which analyses files in pdb format (file: 3IE9.pdb). The program loads the coordinates of the atoms of the protein molecule and writes them in xyz format to the protein.xyz file (the lines starting with '' ATOM ''). The coordinates of all other atoms in the structure (lines starting with ''HETATM'') are written to ''other_residues.xyz ''. [E,C,A]
 
-10. Write a program which analyses files in pdb format. Knowing that the lines in the file beginning with the keyword '' HETATM '' contain the coordinates of the solvent or ion molecules, check that the structure contains copper, magnesium, zinc, sodium or calcium ions. If so, the program should print out the coordinates of those ions shifted by vector [3, 4, 2]. The output file should have the name of the pdb-file, without the .pdb extension and with "_shift.xyz". [A]
+10. Write a program which analyses files in pdb format (file: 3IE9.pdb). Knowing that the lines in the file beginning with the keyword '' HETATM '' contain the coordinates of the solvent or ion molecules, check that the structure contains copper, magnesium, zinc, sodium or calcium ions. If so, the program should print out the coordinates of those ions shifted by vector [3, 4, 2]. The output file should have the name of the pdb-file, without the .pdb extension and with "_shift.xyz". [A]
 
 

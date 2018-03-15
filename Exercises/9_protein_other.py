@@ -15,7 +15,9 @@ for line in lines:
 	
    if line.startswith('HETATM'):
       m = line.split()
-      coord2 = (l[11], float(l[6]), float(l[7]), float(l[8]))
+      coord2 = (m[11], float(m[6]), float(m[7]), float(m[8]))
       print ("%5s %8.3f %8.3f %8.3f"%coord2, file=out_hetatom)
 
 	
+out_atom.close()
+out_hetatom.close()

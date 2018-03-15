@@ -6,7 +6,7 @@ for s in input_string.read().split("\n"):
     w=0
     l = []
     for d in s.split():
-    	if w + len(d) + 1 <= lim:
+        if w + len(d) + 1 <= lim:
             l.append(d)
             w += len(d) + 1
         else:
