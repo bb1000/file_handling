@@ -32,7 +32,7 @@ obeli: herb5
 For reading and writing, the files have to be opened.
 
 ```
->>> file="allherbs"
+>>> file = "allherbs"
 >>> inp = open(file+".knx",'r')
 >>> outas = open(file+".asx",'w')
 >>> outob = open(file+".obx",'w')
@@ -83,9 +83,9 @@ As long as the program didn't reach the end of the file (so, as long as the numb
 Within this loop, the first five characters of the line are examined.
 
 ```
->>>     if (line[:5]) == "aster":
+>>>     if line[:5] == "aster":
 ...           outas.write(line[7:12]+"\n")
->>>     if (line[:5]) == "obeli":
+>>>     if line[:5] == "obeli":
 ...           outob.write(line[7:12]+"\n")
 
 ```
@@ -113,7 +113,7 @@ Which inputfile?
 
 Miraculix can write then `allherbs` to get the `allherbs.knx` file analyzed.
 
-Remark: In `python3`, `input()` delivers a string. When an integer or float number is expected as input, `int(input())` or `float(input())`, respectively, can be used. For an expression, `eval(input())` has to be reverted to.   
+Remark: In `python3`, `input()` returns a string. When an integer or float number is expected as input, `int(input())` or `float(input())`, respectively, can be used. For an expression, `eval(input())` has to be reverted to.   
 
 <!--
 Remark: In `python2`, `raw_input()` delivers a string, while `input()` considers the input as an expression. In `python3`, `raw_input()` does not exist and `input()` takes over the meaning of the old `raw_input()`. When therefore the input has to considered as an expression, `eval(input())` has to be used.  
@@ -140,9 +140,9 @@ IOError: [Errno 2] No such file or directory: 'somethingelse.knx'
 
 ```
 >>> try:
-...   inp= open(file+".knx",'r')
->>> except:
-...   print ('File cannot be opened:', file+".knx")
+...   inp = open(file+".knx",'r')
+>>> except IOError:
+...   print('File cannot be opened:', file+".knx")
 ...   exit()
 
 ```
@@ -183,9 +183,9 @@ It makes not much sense to use the program above, since e.g. the herbs should ha
 -->
 
 ```
->>>     if (line[:5]) == "aster":
+>>>     if line[:5] == "aster":
 ...           outas.write(line[7:])
->>>     if (line[:5]) == "obeli":
+>>>     if line[:5] == "obeli":
 ...           outob.write(line[7:])
 	       
 ```
@@ -198,9 +198,9 @@ In the program above, the name of the Celt is read based upon the number of char
 
 ```
 >>>     spacepos = line.find(' ')
->>>     if (line[:spacepos-1]) == "asterix":
+>>>     if line[:spacepos-1] == "asterix":
 ...           outas.write(line[spacepos+1:])
->>>     if (line[:spacepos-1]) == "obelix":
+>>>     if line[:spacepos-1] == "obelix":
 ...           outob.write(line[spacepos+1:])
 
 ```
@@ -248,8 +248,8 @@ lpg
 We know already
 
 ```
->>> file="obelix_dog"
->>> inp= open(file,'w')
+>>> file = "obelix_dog"
+>>> inp = open(file, 'w')
 >>> inp.write("Idefix")
 >>> inp.close()
 
@@ -258,8 +258,8 @@ We know already
 It is also possible to say
 
 ```
->>> inp= open(file,'w')
->>> print("Idefix",file=inp)
+>>> inp = open(file, 'w')
+>>> print("Idefix", file=inp)
 >>> inp.close()
 ```
 
@@ -270,9 +270,9 @@ It is also possible to say
 It should be known that `inp.write()` only works when a `string` is written out:
 
 ```
->>> file="obelix_wporcs"
->>> inp= open(file,'w')
->>> number= 5
+>>> file = "obelix_wporcs"
+>>> inp = open(file, 'w')
+>>> number = 5
 >>> inp.write(str(number))
 ```
 
@@ -307,7 +307,7 @@ fist: 2
 The total sum of his weapons is given by `readlines()` followed by a `split()` of each line.
 
 ```
->>> inp=open("weapons.asx",'r')
+>>> inp = open("weapons.asx", 'r')
 >>> lines = inp.readlines()
 >>> number = 0
 >>> for line in lines:
