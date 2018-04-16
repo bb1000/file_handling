@@ -155,6 +155,34 @@ File cannot be opened: somethingelse.knx
 
 ```
 
+<!--
+class B(Exception):
+    pass
+
+class C(B):
+    pass
+
+class D(C):
+    pass
+
+for cls in [B, C, D]:
+    try:
+       raise cls()
+    except D:
+       print("D")
+    except C:
+       print("C")
+    except B:
+       print("B")
+-->
+
+
+<!--
+Possible errors:
+ValueError('Please enter a number'-'That was not an integer'), RuntimeError('please indicate your choice with 1 or 2' - 'that was not 1 or 2'), TypeError('passing arguments of wrong type e.g. '2'+2 ), NameError(use a variable before it is created)
+-->
+
+
 ---
 
 ## Common part in the name
