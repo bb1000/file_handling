@@ -50,7 +50,7 @@ As the file is read line per line, it is important to know the total number of t
 ```
 >>> totnumb = 0
 >>> for line in inp:
-        totnumb = totnumb + 1
+...     totnumb = totnumb + 1
 >>> inp.seek(0)
 
 ```
@@ -62,8 +62,8 @@ Each line of `inp` is read in, and its content is analyzed. Remark that the line
 >>> line = inp.readline() 
 >>> number = number + 1
 >>> while "Herb" not in line:
->>>       line = inp.readline()
->>>       number = number + 1
+...       line = inp.readline()
+...       number = number + 1
 
 ```
 
@@ -75,8 +75,8 @@ As long as the program didn't reach the end of the file (so, as long as the numb
 
 ```
 >>> while number < totnumb:
->>>     line = inp.readline()
->>>     number = number + 1
+...     line = inp.readline()
+...     number = number + 1
 
 ```
 
@@ -84,9 +84,9 @@ Within this loop, the first five characters of the line are examined.
 
 ```
 >>>     if (line[:5]) == "aster":
->>>           outas.write(line[7:12]+"\n")
+...           outas.write(line[7:12]+"\n")
 >>>     if (line[:5]) == "obeli":
->>>           outob.write(line[7:12]+"\n")
+...           outob.write(line[7:12]+"\n")
 
 ```
 
@@ -140,10 +140,10 @@ IOError: [Errno 2] No such file or directory: 'somethingelse.knx'
 
 ```
 >>> try:
->>>   inp= open(file+".knx",'r')
+...   inp= open(file+".knx",'r')
 >>> except:
->>>   print ('File cannot be opened:', file+".knx")
->>>   exit()
+...   print ('File cannot be opened:', file+".knx")
+...   exit()
 
 ```
 
@@ -163,7 +163,7 @@ The only part which is important is the one in front of the ".". Remark that the
 
 ```
 >>> if "." in file:
->>>      file = file[:file.find(".")]
+...      file = file[:file.find(".")]
 >>> file
 'allherbs'
 
@@ -184,9 +184,9 @@ It makes not much sense to use the program above, since e.g. the herbs should ha
 
 ```
 >>>     if (line[:5]) == "aster":
->>>           outas.write(line[7:])
+...           outas.write(line[7:])
 >>>     if (line[:5]) == "obeli":
->>>           outob.write(line[7:])
+...           outob.write(line[7:])
 	       
 ```
 
@@ -199,9 +199,9 @@ In the program above, the name of the Celt is read based upon the number of char
 ```
 >>>     spacepos = line.find(' ')
 >>>     if (line[:spacepos-1]) == "asterix":
->>>           outas.write(line[spacepos+1:])
+...           outas.write(line[spacepos+1:])
 >>>     if (line[:spacepos-1]) == "obelix":
->>>           outob.write(line[spacepos+1:])
+...           outob.write(line[spacepos+1:])
 
 ```
 
@@ -311,7 +311,7 @@ The total sum of his weapons is given by `readlines()` followed by a `split()` o
 >>> lines = inp.readlines()
 >>> number = 0
 >>> for line in lines:
->>>     number = number + int(line.split()[1])
+...     number = number + int(line.split()[1])
 >>> print(number)
 11
 
