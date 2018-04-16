@@ -32,10 +32,10 @@ obeli: herb5
 For reading and writing, the files have to be opened.
 
 ```
->>> file = "allherbs"
->>> inp = open(file+".knx",'r')
->>> outas = open(file+".asx",'w')
->>> outob = open(file+".obx",'w')
+>>> file_in = "allherbs"
+>>> inp = open(file_in+".knx",'r')
+>>> outas = open(file_in+".asx",'w')
+>>> outob = open(file_in+".obx",'w')
 
 ```
 
@@ -106,7 +106,7 @@ Finally, all files are closed. The writing only occurs at the moment of closing.
 Imagine Kaningentix didn't have only the file allherbs.knx, but also alldiseases.knx and allforces.knx. Miraculix likes to have a program in which he can decide upon the file to be decomposed.
 
 ```
->>> file = input("Which inputfile? ")
+>>> file_in = input("Which inputfile? ")
 Which inputfile?
 
 ```
@@ -128,7 +128,7 @@ Imagine now that Miraculix gives a name of a file which does not exist. The prog
 
 <!--
 file=raw_input("Which inputfile? ")
-inp= open(file+".knx",'r')
+inp= open(file_in+".knx",'r')
 
 Errormessage:
 Which inputfile? somethingelse
@@ -140,9 +140,9 @@ IOError: [Errno 2] No such file or directory: 'somethingelse.knx'
 
 ```
 >>> try:
-...   inp = open(file+".knx",'r')
+...   inp = open(file_in+".knx",'r')
 >>> except IOError:
-...   print('File cannot be opened:', file+".knx")
+...   print('File cannot be opened:', file_in+".knx")
 ...   exit()
 
 ```
@@ -190,9 +190,9 @@ ValueError('Please enter a number'-'That was not an integer'), RuntimeError('ple
 The only part which is important is the one in front of the ".". Remark that the name of the file is like an array and that only from element "0" until (but not including) the "." is retained.   
 
 ```
->>> if "." in file:
-...      file = file[:file.find(".")]
->>> file
+>>> if "." in file_in:
+...      file_in = file_in[:file_in.find(".")]
+>>> file_in
 'allherbs'
 
 ```
@@ -276,8 +276,8 @@ lpg
 We know already
 
 ```
->>> file = "obelix_dog"
->>> inp = open(file, 'w')
+>>> file_in = "obelix_dog"
+>>> inp = open(file_in, 'w')
 >>> inp.write("Idefix")
 >>> inp.close()
 
@@ -286,9 +286,10 @@ We know already
 It is also possible to say
 
 ```
->>> inp = open(file, 'w')
+>>> inp = open(file_in, 'w')
 >>> print("Idefix", file=inp)
 >>> inp.close()
+
 ```
 
 ---
@@ -298,8 +299,8 @@ It is also possible to say
 It should be known that `inp.write()` only works when a `string` is written out:
 
 ```
->>> file = "obelix_wporcs"
->>> inp = open(file, 'w')
+>>> file_in = "obelix_wporcs"
+>>> inp = open(file_in, 'w')
 >>> number = 5
 >>> inp.write(str(number))
 ```
@@ -348,6 +349,13 @@ The total sum of his weapons is given by `readlines()` followed by a `split()` o
 `split()`, which standard separates parts of a line by a space, gives access to a list. Remark that `line.split()` is default known as a string.
 
 The opposite is `join()`: when `l` is a list of words, `" ".join(l)` gives a sentence in which the words are separated by spaces.   
+
+<!--
+' '.join(l) is only possible for strings!
+
+>>> list=[5, 56, 24, 22]
+>>> print(' '.join(str(x) for x in list))
+-->
 
 ---
 
