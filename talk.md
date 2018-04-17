@@ -55,6 +55,19 @@ As the file is read line per line, it is important to know the total number of t
 
 ```
 
+<!--
+Remark this is a clumsy way of doing:
+
+>>> totnumb
+8
+>>> inp.seek(0)
+>>> lines = inp.readlines()
+>>> len(lines)
+8
+>>> inp.seek(0)
+-->
+
+
 Each line of `inp` is read in, and its content is analyzed. Remark that the lines are counted, using `number` - and that its value has to be initiated in the beginning.
 
 ```
@@ -182,6 +195,25 @@ Possible errors:
 ValueError('Please enter a number'-'That was not an integer'), RuntimeError('please indicate your choice with 1 or 2' - 'that was not 1 or 2'), TypeError('passing arguments of wrong type e.g. '2'+2 ), NameError(use a variable before it is created)
 -->
 
+A fast look upon other errors:
+
+```
+>>> try:
+...    <I would like to try to do something>
+>>> except IOError:
+...    print("This is something like 'cannot open'")
+>>> except ValueError:
+...    print("Could not convert data to an integer.")
+>>> except RuntimeError:
+...    print("you had only choice between 1 and 2 - 3 is not possible")
+>>> except TypeError:
+...    print("passing arguments of wrong type e.g. '2' + 2 ")
+>>> except NameError:
+...    print("use a variable before it is created")
+>>> except:
+...    print("I have no idea which error")
+
+```
 
 ---
 
@@ -194,6 +226,18 @@ The only part which is important is the one in front of the ".". Remark that the
 ...      file_in = file_in[:file_in.find(".")]
 >>> file_in
 'allherbs'
+
+```
+
+Using libraries, this can be done nicer:
+
+```
+>>> import os
+>>> file_in, file_extension= os.path.splitext(file_in)
+>>> file_in
+'allherbs'
+>>> file_extension
+'.knx'
 
 ```
 
@@ -346,16 +390,25 @@ The total sum of his weapons is given by `readlines()` followed by a `split()` o
 
 ```
 
-`split()`, which standard separates parts of a line by a space, gives access to a list. Remark that `line.split()` is default known as a string.
+`split()`, which standard separates parts of a line by a space, gives access to a list. Remark that `line.split()` gives access to a list of strings.
 
-The opposite is `join()`: when `l` is a list of words, `" ".join(l)` gives a sentence in which the words are separated by spaces.   
+---
+
+## Join
+
+The opposite of `split()` is somehow `join()`: when `l` is a list of words, `" ".join(l)` gives a a sentence in which the words are separated by spaces.   
 
 <!--
 ' '.join(l) is only possible for strings!
-
->>> list=[5, 56, 24, 22]
->>> print(' '.join(str(x) for x in list))
 -->
+
+```
+>>> fourlist=[5, 56, 24, 22]
+>>> str_of_numbers=' '.join(str(x) for x in fourlist)
+>>> print(str_of_numbers)
+5 56 24 22
+
+```
 
 ---
 
