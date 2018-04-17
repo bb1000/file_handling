@@ -171,10 +171,10 @@ obeli: herb5
 For reading and writing, the files have to be opened.
 
 ```
-&gt;&gt;&gt; file = &#34;allherbs&#34;
-&gt;&gt;&gt; inp = open(file+&#34;.knx&#34;,&#39;r&#39;)
-&gt;&gt;&gt; outas = open(file+&#34;.asx&#34;,&#39;w&#39;)
-&gt;&gt;&gt; outob = open(file+&#34;.obx&#34;,&#39;w&#39;)
+&gt;&gt;&gt; file_in = &#34;allherbs&#34;
+&gt;&gt;&gt; inp = open(file_in+&#34;.knx&#34;,&#39;r&#39;)
+&gt;&gt;&gt; outas = open(file_in+&#34;.asx&#34;,&#39;w&#39;)
+&gt;&gt;&gt; outob = open(file_in+&#34;.obx&#34;,&#39;w&#39;)
 
 ```
 
@@ -245,7 +245,7 @@ Finally, all files are closed. The writing only occurs at the moment of closing.
 Imagine Kaningentix didn&#39;t have only the file allherbs.knx, but also alldiseases.knx and allforces.knx. Miraculix likes to have a program in which he can decide upon the file to be decomposed.
 
 ```
-&gt;&gt;&gt; file = input(&#34;Which inputfile? &#34;)
+&gt;&gt;&gt; file_in = input(&#34;Which inputfile? &#34;)
 Which inputfile?
 
 ```
@@ -267,7 +267,7 @@ Imagine now that Miraculix gives a name of a file which does not exist. The prog
 
 &lt;!--
 file=raw_input(&#34;Which inputfile? &#34;)
-inp= open(file+&#34;.knx&#34;,&#39;r&#39;)
+inp= open(file_in+&#34;.knx&#34;,&#39;r&#39;)
 
 Errormessage:
 Which inputfile? somethingelse
@@ -279,9 +279,9 @@ IOError: [Errno 2] No such file or directory: &#39;somethingelse.knx&#39;
 
 ```
 &gt;&gt;&gt; try:
-...   inp = open(file+&#34;.knx&#34;,&#39;r&#39;)
+...   inp = open(file_in+&#34;.knx&#34;,&#39;r&#39;)
 &gt;&gt;&gt; except IOError:
-...   print(&#39;File cannot be opened:&#39;, file+&#34;.knx&#34;)
+...   print(&#39;File cannot be opened:&#39;, file_in+&#34;.knx&#34;)
 ...   exit()
 
 ```
@@ -294,6 +294,34 @@ File cannot be opened: somethingelse.knx
 
 ```
 
+&lt;!--
+class B(Exception):
+    pass
+
+class C(B):
+    pass
+
+class D(C):
+    pass
+
+for cls in [B, C, D]:
+    try:
+       raise cls()
+    except D:
+       print(&#34;D&#34;)
+    except C:
+       print(&#34;C&#34;)
+    except B:
+       print(&#34;B&#34;)
+--&gt;
+
+
+&lt;!--
+Possible errors:
+ValueError(&#39;Please enter a number&#39;-&#39;That was not an integer&#39;), RuntimeError(&#39;please indicate your choice with 1 or 2&#39; - &#39;that was not 1 or 2&#39;), TypeError(&#39;passing arguments of wrong type e.g. &#39;2&#39;+2 ), NameError(use a variable before it is created)
+--&gt;
+
+
 ---
 
 ## Common part in the name
@@ -301,9 +329,9 @@ File cannot be opened: somethingelse.knx
 The only part which is important is the one in front of the &#34;.&#34;. Remark that the name of the file is like an array and that only from element &#34;0&#34; until (but not including) the &#34;.&#34; is retained.   
 
 ```
-&gt;&gt;&gt; if &#34;.&#34; in file:
-...      file = file[:file.find(&#34;.&#34;)]
-&gt;&gt;&gt; file
+&gt;&gt;&gt; if &#34;.&#34; in file_in:
+...      file_in = file_in[:file_in.find(&#34;.&#34;)]
+&gt;&gt;&gt; file_in
 &#39;allherbs&#39;
 
 ```
@@ -387,8 +415,8 @@ lpg
 We know already
 
 ```
-&gt;&gt;&gt; file = &#34;obelix_dog&#34;
-&gt;&gt;&gt; inp = open(file, &#39;w&#39;)
+&gt;&gt;&gt; file_in = &#34;obelix_dog&#34;
+&gt;&gt;&gt; inp = open(file_in, &#39;w&#39;)
 &gt;&gt;&gt; inp.write(&#34;Idefix&#34;)
 &gt;&gt;&gt; inp.close()
 
@@ -397,9 +425,10 @@ We know already
 It is also possible to say
 
 ```
-&gt;&gt;&gt; inp = open(file, &#39;w&#39;)
+&gt;&gt;&gt; inp = open(file_in, &#39;w&#39;)
 &gt;&gt;&gt; print(&#34;Idefix&#34;, file=inp)
 &gt;&gt;&gt; inp.close()
+
 ```
 
 ---
@@ -409,8 +438,8 @@ It is also possible to say
 It should be known that `inp.write()` only works when a `string` is written out:
 
 ```
-&gt;&gt;&gt; file = &#34;obelix_wporcs&#34;
-&gt;&gt;&gt; inp = open(file, &#39;w&#39;)
+&gt;&gt;&gt; file_in = &#34;obelix_wporcs&#34;
+&gt;&gt;&gt; inp = open(file_in, &#39;w&#39;)
 &gt;&gt;&gt; number = 5
 &gt;&gt;&gt; inp.write(str(number))
 ```
@@ -459,6 +488,13 @@ The total sum of his weapons is given by `readlines()` followed by a `split()` o
 `split()`, which standard separates parts of a line by a space, gives access to a list. Remark that `line.split()` is default known as a string.
 
 The opposite is `join()`: when `l` is a list of words, `&#34; &#34;.join(l)` gives a sentence in which the words are separated by spaces.   
+
+&lt;!--
+&#39; &#39;.join(l) is only possible for strings!
+
+&gt;&gt;&gt; list=[5, 56, 24, 22]
+&gt;&gt;&gt; print(&#39; &#39;.join(str(x) for x in list))
+--&gt;
 
 ---
 
