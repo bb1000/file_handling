@@ -194,6 +194,19 @@ As the file is read line per line, it is important to know the total number of t
 
 ```
 
+&lt;!--
+Remark this is a clumsy way of doing:
+
+&gt;&gt;&gt; totnumb
+8
+&gt;&gt;&gt; inp.seek(0)
+&gt;&gt;&gt; lines = inp.readlines()
+&gt;&gt;&gt; len(lines)
+8
+&gt;&gt;&gt; inp.seek(0)
+--&gt;
+
+
 Each line of `inp` is read in, and its content is analyzed. Remark that the lines are counted, using `number` - and that its value has to be initiated in the beginning.
 
 ```
@@ -321,6 +334,25 @@ Possible errors:
 ValueError(&#39;Please enter a number&#39;-&#39;That was not an integer&#39;), RuntimeError(&#39;please indicate your choice with 1 or 2&#39; - &#39;that was not 1 or 2&#39;), TypeError(&#39;passing arguments of wrong type e.g. &#39;2&#39;+2 ), NameError(use a variable before it is created)
 --&gt;
 
+A fast look upon other errors:
+
+```
+&gt;&gt;&gt; try:
+...    &lt;I would like to try to do something&gt;
+&gt;&gt;&gt; except IOError:
+...    print(&#34;This is something like &#39;cannot open&#39;&#34;)
+&gt;&gt;&gt; except ValueError:
+...    print(&#34;Could not convert data to an integer.&#34;)
+&gt;&gt;&gt; except RuntimeError:
+...    print(&#34;you had only choice between 1 and 2 - 3 is not possible&#34;)
+&gt;&gt;&gt; except TypeError:
+...    print(&#34;passing arguments of wrong type e.g. &#39;2&#39; + 2 &#34;)
+&gt;&gt;&gt; except NameError:
+...    print(&#34;use a variable before it is created&#34;)
+&gt;&gt;&gt; except:
+...    print(&#34;I have no idea which error&#34;)
+
+```
 
 ---
 
@@ -333,6 +365,18 @@ The only part which is important is the one in front of the &#34;.&#34;. Remark 
 ...      file_in = file_in[:file_in.find(&#34;.&#34;)]
 &gt;&gt;&gt; file_in
 &#39;allherbs&#39;
+
+```
+
+Using libraries, this can be done nicer:
+
+```
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; file_in, file_extension= os.path.splitext(file_in)
+&gt;&gt;&gt; file_in
+&#39;allherbs&#39;
+&gt;&gt;&gt; file_extension
+&#39;.knx&#39;
 
 ```
 
@@ -485,16 +529,25 @@ The total sum of his weapons is given by `readlines()` followed by a `split()` o
 
 ```
 
-`split()`, which standard separates parts of a line by a space, gives access to a list. Remark that `line.split()` is default known as a string.
+`split()`, which standard separates parts of a line by a space, gives access to a list. Remark that `line.split()` gives access to a list of strings.
 
-The opposite is `join()`: when `l` is a list of words, `&#34; &#34;.join(l)` gives a sentence in which the words are separated by spaces.   
+---
+
+## Join
+
+The opposite of `split()` is somehow `join()`: when `l` is a list of words, `&#34; &#34;.join(l)` gives a a sentence in which the words are separated by spaces.   
 
 &lt;!--
 &#39; &#39;.join(l) is only possible for strings!
-
-&gt;&gt;&gt; list=[5, 56, 24, 22]
-&gt;&gt;&gt; print(&#39; &#39;.join(str(x) for x in list))
 --&gt;
+
+```
+&gt;&gt;&gt; fourlist=[5, 56, 24, 22]
+&gt;&gt;&gt; str_of_numbers=&#39; &#39;.join(str(x) for x in fourlist)
+&gt;&gt;&gt; print(str_of_numbers)
+5 56 24 22
+
+```
 
 ---
 
