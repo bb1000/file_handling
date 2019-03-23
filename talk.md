@@ -422,6 +422,150 @@ Carol likes cherry
 
 ---
 
+## Slicing sequences
+
+If you want to access a subset of the sequence (e.g. a substring)
+
+```python
+mystring = "ATATCGCGATCG"
+
+print(mystring[:4], mystring[4:8], mystring[8:])
+```
+
+---
+
+## Slicing sequences
+
+If you want to access a subset of the sequence (e.g. a substring)
+
+```python
+mystring = "ATATCGCGATCG"
+
+print(mystring[:4], mystring[4:8], mystring[8:])
+```
+
+<pre>
+ATAT CGCG ATCG
+</pre>
+
+---
+
+## Slicing sequences
+
+If you want to access a subset of the sequence (e.g. a substring)
+
+```python
+mystring = "ATATCGCGATCG"
+
+print(mystring[:4], mystring[4:8], mystring[8:])
+```
+
+<pre>
+ATAT CGCG ATCG
+</pre>
+
+```python
+mystring = "ATATCGCGATCG"
+
+print(mystring[:4:2], mystring[4:8:2], mystring[8::2])
+```
+
+---
+
+## Slicing sequences
+
+If you want to access a subset of the sequence (e.g. a substring)
+
+```python
+mystring = "ATATCGCGATCG"
+
+print(mystring[:4], mystring[4:8], mystring[8:])
+```
+
+<pre>
+ATAT CGCG ATCG
+</pre>
+
+```python
+mystring = "ATATCGCGATCG"
+
+print(mystring[:4:2], mystring[4:8:2], mystring[8::2])
+```
+
+<pre>
+AA CC AC
+</pre>
+
+---
+
+## Slicing sequences
+
+If you want to access a subset of the sequence (e.g. a substring)
+
+```python
+mystring = "ATATCGCGATCG"
+
+print(mystring[:4], mystring[4:8], mystring[8:])
+```
+
+<pre>
+ATAT CGCG ATCG
+</pre>
+
+```python
+mystring = "ATATCGCGATCG"
+
+print(mystring[:4:2], mystring[4:8:2], mystring[8::2])
+```
+
+<pre>
+AA CC AC
+</pre>
+
+```python
+mystring = "ATATCGCGATCG"
+
+print([::-1])
+```
+
+---
+
+## Slicing sequences
+
+If you want to access a subset of the sequence (e.g. a substring)
+
+```python
+mystring = "ATATCGCGATCG"
+
+print(mystring[:4], mystring[4:8], mystring[8:])
+```
+
+<pre>
+ATAT CGCG ATCG
+</pre>
+
+```python
+mystring = "ATATCGCGATCG"
+
+print(mystring[:4:2], mystring[4:8:2], mystring[8::2])
+```
+
+<pre>
+AA CC AC
+</pre>
+
+```python
+mystring = "ATATCGCGATCG"
+
+print([::-1])
+```
+
+<pre>
+GCTAGCGCTATA
+</pre>
+
+---
+
 ## String formatting
 
 + Old style
