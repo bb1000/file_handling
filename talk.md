@@ -6,11 +6,421 @@
 ## 
 
 BB1000 Programming in Python
+
 KTH
 
 ---
 
 layout: false
+
+## Learning objectives
+
++ File operations: open, close, read, write, etc.
+
++ Handling of input and output
+
++ Usage of string, list, dictionary, etc.
+
+---
+
+## String, list, dictionary...
+
+Initialize an empty string/list/dictionary
+
+```python
+mystring = ""
+
+mylist = []
+
+mydictionary = {}
+```
+
+---
+
+## String, list, dictionary...
+
+Initialize an empty string/list/dictionary
+
+```python
+mystring = ""
+
+mylist = []
+
+mydictionary = {}
+```
+
+Check if a string is empty
+
++ Straightforward way
+
+```python
+if len(mystring) > 0:
+    print("This string is not empty.")
+else:
+    print("This string is empty.")
+```
+
+---
+
+## String, list, dictionary...
+
+Initialize an empty string/list/dictionary
+
+```python
+mystring = ""
+
+mylist = []
+
+mydictionary = {}
+```
+
+Check if a string is empty
+
++ Straightforward way
+
+```python
+if len(mystring) > 0:
+    print("This string is not empty.")
+else:
+    print("This string is empty.")
+```
+
++ Pythonic way
+
+```python
+if mystring:
+    print("This string is not empty.")
+else:
+    print("This string is empty.")
+```
+
+---
+
+## String, list, dictionary...
+
+Check if a list is empty
+
+```python
+if mylist:
+    print("This list is not empty.")
+else:
+    print("This list is empty.")
+```
+
+---
+
+## String, list, dictionary...
+
+Check if a list is empty
+
+```python
+if mylist:
+    print("This list is not empty.")
+else:
+    print("This list is empty.")
+```
+
+Check if a dictionary is empty
+
+```python
+if mydictionary:
+    print("This dictionary is not empty.")
+else:
+    print("This dictionary is empty.")
+```
+
+https://docs.python.org/2/library/stdtypes.html#truth-value-testing
+
+---
+
+## Accessing elements ...
+
++ Characters in a string:
+
+```python
+mystring = "Tack!"
+
+for c in mystring:
+    print(c)
+```
+
+---
+
+## Accessing elements ...
+
++ Characters in a string:
+
+```python
+mystring = "Tack!"
+
+for c in mystring:
+    print(c)
+```
+
+<pre>
+T
+a
+c
+k
+!
+</pre>
+
+---
+
+## Accessing elements ...
+
++ Characters in a string:
+
+```python
+mystring = "Tack!"
+
+for c in mystring:
+    print(c)
+```
+
+<pre>
+T
+a
+c
+k
+!
+</pre>
+
++ If you want to print in one line:
+
+```python
+mystring = "Tack!"
+
+for c in mystring:
+    print(c, end=" ")
+```
+
+---
+
+## Accessing elements ...
+
++ Characters in a string:
+
+```python
+mystring = "Tack!"
+
+for c in mystring:
+    print(c)
+```
+
+<pre>
+T
+a
+c
+k
+!
+</pre>
+
++ If you want to print in one line:
+
+```python
+mystring = "Tack!"
+
+for c in mystring:
+    print(c, end=" ")
+```
+
+<pre>
+T a c k ! 
+</pre>
+
+---
+
+## Accessing elements ...
+
++ Elements in a list:
+
+```python
+mylist = ["apple", "pear", "banana"]
+
+for element in mylist:
+    print(element)
+```
+
+---
+
+## Accessing elements ...
+
++ Elements in a list:
+
+```python
+mylist = ["apple", "pear", "banana"]
+
+for element in mylist:
+    print(element)
+```
+
+<pre>
+apple
+pear
+banana
+</pre>
+
+---
+
+## Accessing elements ...
+
++ Elements in a list:
+
+```python
+mylist = ["apple", "pear", "banana"]
+
+for element in mylist:
+    print(element)
+```
+
+<pre>
+apple
+pear
+banana
+</pre>
+
++ Keys in a dictionary:
+
+```python
+mydictionary = {"A": "adenine", "C": "cytosine", "G": "guanine", "T": "thymine"}
+
+for key in mydictionary:
+    print(key)
+```
+
+---
+
+## Accessing elements ...
+
++ Elements in a list:
+
+```python
+mylist = ["apple", "pear", "banana"]
+
+for element in mylist:
+    print(element)
+```
+
+<pre>
+apple
+pear
+banana
+</pre>
+
++ Keys in a dictionary:
+
+```python
+mydictionary = {"A": "adenine", "C": "cytosine", "G": "guanine", "T": "thymine"}
+
+for key in mydictionary:
+    print(key)
+```
+
+<pre>
+A
+C
+G
+T
+</pre>
+
+---
+
+## Accessing elements ...
+
++ If you want to access both the index and the element
+
+```python
+mylist = ["apple", "banana", "cherry"]
+
+for index, element in enumerate(mylist):
+    print("The element with index {} is {}".format(index, element))
+```
+
+---
+
+## Accessing elements ...
+
++ If you want to access both the index and the element
+
+```python
+mylist = ["apple", "banana", "cherry"]
+
+for index, element in enumerate(mylist):
+    print("The element with index {} is {}".format(index, element))
+```
+
+<pre>
+The element with index 0 is apple
+The element with index 1 is banana
+The element with index 2 is cherry
+</pre>
+
+---
+
+## Accessing elements ...
+
++ If you want to access both the index and the element
+
+```python
+mylist = ["apple", "banana", "cherry"]
+
+for index, element in enumerate(mylist):
+    print("The element with index {} is {}".format(index, element))
+```
+
+<pre>
+The element with index 0 is apple
+The element with index 1 is banana
+The element with index 2 is cherry
+</pre>
+
++ If you want to access two lists at the same time
+
+```python
+names = ["Alice", "Bob", "Carol"]
+fruits = ["apple", "banana", "cherry"]
+
+for name, fruit in zip(names, fruits):
+    print("{} likes {}".format(name, fruit))
+```
+
+---
+
+## Accessing elements ...
+
++ If you want to access both the index and the element
+
+```python
+mylist = ["apple", "banana", "cherry"]
+
+for index, element in enumerate(mylist):
+    print("The element with index {} is {}".format(index, element))
+```
+
+<pre>
+The element with index 0 is apple
+The element with index 1 is banana
+The element with index 2 is cherry
+</pre>
+
++ If you want to access two lists at the same time
+
+```python
+names = ["Alice", "Bob", "Carol"]
+fruits = ["apple", "banana", "cherry"]
+
+for name, fruit in zip(names, fruits):
+    print("{} likes {}".format(name, fruit))
+```
+
+<pre>
+Alice likes apple
+Bob likes banana
+Carol likes cherry
+</pre>
+
+---
 
 ## Example from Back in the Day
 
