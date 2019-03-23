@@ -422,6 +422,128 @@ Carol likes cherry
 
 ---
 
+## String formatting
+
++ Old style
+
+```python
+import math
+
+print("The value of pi is approximately %f" % math.pi)
+```
+
+<pre>
+The value of pi is approximately 3.141593
+</pre>
+
+---
+
+## String formatting
+
++ Old style
+
+```python
+import math
+
+print("The value of pi is approximately %f" % math.pi)
+```
+
+<pre>
+The value of pi is approximately 3.141593
+</pre>
+
+```python
+import math
+
+print("The value of pi is approximately %.8f" % math.pi)
+print("The value of pi is approximately %20.12f" % math.pi)
+```
+
+<pre>
+The value of pi is approximately 3.14159265
+The value of pi is approximately       3.141592653590
+</pre>
+
+---
+
+## String formatting
+
++ The `format` method
+
+```python
+import math
+
+print("The value of pi is approximately {}".format(str(math.pi)))
+print("The value of pi is approximately {}".format(math.pi))
+
+print("The value of pi is approximately {:f}".format(math.pi))
+print("The value of pi is approximately {:.8f}".format(math.pi))
+print("The value of pi is approximately {:20.12f}".format(math.pi))
+```
+
+---
+
+## String formatting
+
++ The `format` method
+
+```python
+import math
+
+print("The value of pi is approximately {}".format(str(math.pi)))
+print("The value of pi is approximately {}".format(math.pi))
+
+print("The value of pi is approximately {:f}".format(math.pi))
+print("The value of pi is approximately {:.8f}".format(math.pi))
+print("The value of pi is approximately {:20.12f}".format(math.pi))
+```
+
+<pre>
+The value of pi is approximately 3.141592653589793
+The value of pi is approximately 3.141592653589793
+The value of pi is approximately 3.141593
+The value of pi is approximately 3.14159265
+The value of pi is approximately       3.141592653590
+</pre>
+
+---
+
+## String formatting
+
++ The formatted string literals (f-string, new in Python 3.6)
+
+```python
+import math
+
+print(f"The value of pi is approximately {math.pi}")
+print(f"The value of pi is approximately {math.pi:.8f}")
+print(f"The value of pi is approximately {math.pi:20.12f}")
+```
+
+---
+
+## String formatting
+
++ The formatted string literals (f-string, new in Python 3.6)
+
+```python
+import math
+
+print(f"The value of pi is approximately {math.pi}")
+print(f"The value of pi is approximately {math.pi:.8f}")
+print(f"The value of pi is approximately {math.pi:20.12f}")
+```
+
+<pre>
+The value of pi is approximately 3.141592653589793
+The value of pi is approximately 3.14159265
+The value of pi is approximately       3.141592653590
+</pre>
+
+https://docs.python.org/3/tutorial/inputoutput.html
+
+---
+
 ## Example from Back in the Day
 
 Imagine researcher Miraculix has a student Kaningentix, who has called all his datafiles with a suffix .knx The first task is then to reduce the title to its essentials. Miraculix has to split out the herbs for Asterix and Obelix with suffix .asx and .obx
