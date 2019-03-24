@@ -688,9 +688,67 @@ https://docs.python.org/3/tutorial/inputoutput.html
 
 ---
 
+## What we learned so far
+
++ How to initialize an empty string/list/dictionary
+
++ How to check if a string/tuple/list/dictionary is empty
+
++ How to use `for` loop to access the elements
+
++ How to use `enumerate` and `zip`
+
++ How to slice a sequence using `[start:stop:step]`
+
++ How to format a string
+
+---
+
+## Opening file
+
+The built-in `open` function
+
++ `open` accepts a file name and a mode as arguments
+
++ file name: a string
+
++ mode: 'r' for reading; 'w' for writing
+
++ `open` returns a file object
+
++ after reading, the opened file should be closed
+
+https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
+
+---
+
+## Reading/writing file
+
++ The `read` method
+
+  Reads the entire file, unless a `size` argument is provided
+
++ The `readline` method
+
+  Reads one line from the file
+
++ The `readlines` method
+
+  Reads all lines from the file into a list
+
++ The `write` method
+
+  Accepts a string as argument, and writes the string to file
+
+---
+
 ## Example from Back in the Day
 
-Imagine researcher Miraculix has a student Kaningentix, who has called all his datafiles with a suffix .knx The first task is then to reduce the title to its essentials. Miraculix has to split out the herbs for Asterix and Obelix with suffix .asx and .obx
+Imagine researcher Miraculix has a student Kaningentix, who has called all his
+datafiles with a suffix `.knx`.
+
+Miraculix has to split out the herbs for Asterix and Obelix with suffix `.asx`
+and `.obx`.
 
 ```
 $ cat allherbs.knx
@@ -702,92 +760,269 @@ obeli: herb2
 aster: herb3
 aster: herb4
 obeli: herb5
-
-```
-
-For reading and writing, the files have to be opened.
-
-```
->>> file_in = "allherbs"
->>> inp = open(file_in+".knx",'r')
->>> outas = open(file_in+".asx",'w')
->>> outob = open(file_in+".obx",'w')
-
-```
-
-The 'r' points at a file aimed only to be read, while 'w' is aimed only for writing.
-
----
-
-## Example from Back in the Day
-
-As the file is read line per line, it is important to know the total number of the lines (`totnumb`). Since the file has been read up till the end, Miraculix has to start again from the beginning using `inp.seek(0)`. 
-
-```
->>> totnumb = 0
->>> for line in inp:
-...     totnumb = totnumb + 1
->>> inp.seek(0)
-
-```
-
-<!--
-Remark this is a clumsy way of doing:
-
->>> totnumb
-8
->>> inp.seek(0)
->>> lines = inp.readlines()
->>> len(lines)
-8
->>> inp.seek(0)
--->
-
-
-Each line of `inp` is read in, and its content is analyzed. Remark that the lines are counted, using `number` - and that its value has to be initiated in the beginning.
-
-```
->>> number = 0
->>> line = inp.readline() 
->>> number = number + 1
->>> while "Herb" not in line:
-...       line = inp.readline()
-...       number = number + 1
-
 ```
 
 ---
 
 ## Example from Back in the Day
 
-As long as the program didn't reach the end of the file (so, as long as the number of read lines is smaller than the total amount of lines in the file), the next line is read.
+Imagine researcher Miraculix has a student Kaningentix, who has called all his
+datafiles with a suffix `.knx`.
+
+Miraculix has to split out the herbs for Asterix and Obelix with suffix `.asx`
+and `.obx`.
 
 ```
->>> while number < totnumb:
-...     line = inp.readline()
-...     number = number + 1
-
+$ cat allherbs.knx
+Creator of file: Kaningentix
+First test
+Herbs Celts
+aster: herb1
+obeli: herb2
+aster: herb3
+aster: herb4
+obeli: herb5
 ```
 
-Within this loop, the first five characters of the line are examined.
+To read this file in Python, we need to open it first.
 
-```
->>>     if line[:5] == "aster":
-...           outas.write(line[7:12]+"\n")
->>>     if line[:5] == "obeli":
-...           outob.write(line[7:12]+"\n")
-
+```python
+f_inp = open("allherbs.knx", 'r')
 ```
 
-Finally, all files are closed. The writing only occurs at the moment of closing.
+'r' means that the file is opened in read-only mode.
+
+---
+
+## Example from Back in the Day
+
+File are usually read line per line. Sometimes it is useful to know the total
+number of the lines in the file.
+
+```python
+num_lines = 0
+for line in f_inp:
+    num_lines += 1
+```
+
+---
+
+## Example from Back in the Day
+
+File are usually read line per line. Sometimes it is useful to know the total
+number of the lines in the file.
+
+```python
+num_lines = 0
+for line in f_inp:
+    num_lines += 1
+```
+
+Other ways of getting number of lines:
+
+```python
+f_inp.seek(0)
+lines = list(f_inp)
+num_lines = len(lines)
+```
+
+```python
+f_inp.seek(0)
+lines = f_inp.readlines()
+num_lines = len(lines)
+```
+
+```python
+f_inp.close()
+```
+
+Note that `inp.seek(0)` is used to make sure that we start over from the
+beginning of the file.
+
+---
+
+## Example from Back in the Day
+
+In most cases all the information can be retrieved by reading the file once.
+
+```python
+f_inp = open("allherbs.knx", 'r')
+
+for line in f_inp:
+    if "aster:" in line:
+        print(line)
+    elif "obeli:" in line:
+        print(line)
+
+f_inp.close()
+```
+
+---
+
+## Example from Back in the Day
+
+In most cases all the information can be retrieved by reading the file once.
+
+```python
+f_inp = open("allherbs.knx", 'r')
+
+for line in f_inp:
+    if "aster:" in line:
+        print(line)
+    elif "obeli:" in line:
+        print(line)
+
+f_inp.close()
+```
+
+<pre>
+aster: herb1
+
+obeli: herb2
+
+aster: herb3
+
+aster: herb4
+
+obeli: herb5
+
+</pre>
+
+---
+
+## Example from Back in the Day
+
+We can use lists to save the herbs that belong to Asterix or Obelix.
+
+```python
+herbs_asx = []
+herbs_obx = []
+
+f_inp = open("allherbs.knx", 'r')
+
+for line in f_inp:
+    if "aster:" in line:
+        herb = line.split()[1]
+        herbs_asx.append(herb)
+    elif "obeli:" in line:
+        herb = line.split()[1]
+        herbs_obx.append(herb)
+
+f_inp.close()
+
+print(herbs_asx)
+print(herbs_obx)
+```
+
+---
+
+## Example from Back in the Day
+
+We can use lists to save the herbs that belong to Asterix or Obelix.
+
+```python
+herbs_asx = []
+herbs_obx = []
+
+f_inp = open("allherbs.knx", 'r')
+
+for line in f_inp:
+    if "aster:" in line:
+        herb = line.split()[1]
+        herbs_asx.append(herb)
+    elif "obeli:" in line:
+        herb = line.split()[1]
+        herbs_obx.append(herb)
+
+f_inp.close()
+
+print(herbs_asx)
+print(herbs_obx)
+```
+
+<pre>
+['herb1', 'herb3', 'herb4']
+['herb2', 'herb5']
+</pre>
+
+---
+
+## Example from Back in the Day
+
+If we want to save the herbs to file
+
+```python
+f_out_asx = open("allherbs.asx", 'w')
+f_out_obx = open("allherbs.obx", 'w')
+
+for herb in herbs_asx:
+    f_out_asx.write(herb + '\n')
+
+for herb in herbs_obx:
+    f_out_obx.write(herb + '\n')
+
+f_out_asx.close()
+f_out_obx.close()
+```
+
+---
+
+## Example from Back in the Day
+
+If we want to save the herbs to file
+
+```python
+f_out_asx = open("allherbs.asx", 'w')
+f_out_obx = open("allherbs.obx", 'w')
+
+for herb in herbs_asx:
+    f_out_asx.write(herb + '\n')
+
+for herb in herbs_obx:
+    f_out_obx.write(herb + '\n')
+
+f_out_asx.close()
+f_out_obx.close()
+```
 
 ```
->>> inp.close()
->>> outas.close()
->>> outob.close()
-
+$ cat allherbs.asx
+herb1
+herb3
+herb4
 ```
 
+```
+$ cat allherbs.obx
+herb2
+herb5
+```
+
+---
+
+## Example from Back in the Day
+
+If we do both reading and writing in one program
+
+```python
+f_inp = open("allherbs.knx", 'r')
+f_out_asx = open("allherbs.asx", 'w')
+f_out_obx = open("allherbs.obx", 'w')
+
+for line in f_inp:
+
+    if "aster:" in line:
+        herb = line.split()[1]
+        f_out_asx.write(herb + '\n')
+
+    elif "obeli:" in line:
+        herb = line.split()[1]
+        f_out_obx.write(herb + '\n')
+
+f_inp.close()
+f_out_asx.close()
+f_out_obx.close()
+```
 ---
 
 ## Choice of input file
