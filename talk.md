@@ -566,6 +566,123 @@ GCTAGCGCTATA
 
 ---
 
+## Split and join
+
+The built-in `split` function splits a string using a delimiter
+
+```python
+mystring = "My name is Tom."
+mylist = mystring.split()
+print(mylist)
+```
+
+---
+
+## Split and join
+
+The built-in `split` function splits a string using a delimiter
+
+```python
+mystring = "My name is Tom."
+mylist = mystring.split()
+print(mylist)
+```
+
+<pre>
+['My', 'name', 'is', 'Tom.']
+</pre>
+
+---
+
+## Split and join
+
+The built-in `split` function splits a string using a delimiter
+
+```python
+mystring = "My name is Tom."
+mylist = mystring.split()
+print(mylist)
+```
+
+<pre>
+['My', 'name', 'is', 'Tom.']
+</pre>
+
+The opposite of `split` is `join`
+
+```
+mystring = '/'.join(['My', 'name', 'is', 'Tom.'])
+print(mystring)
+```
+
+---
+
+## Split and join
+
+The built-in `split` function splits a string using a delimiter
+
+```python
+mystring = "My name is Tom."
+mylist = mystring.split()
+print(mylist)
+```
+
+<pre>
+['My', 'name', 'is', 'Tom.']
+</pre>
+
+The opposite of `split` is `join`
+
+```
+mystring = '/'.join(['My', 'name', 'is', 'Tom.'])
+print(mystring)
+```
+
+<pre>
+My/name/is/Tom.
+</pre>
+
+---
+
+## Find
+
+The built-in `find` function finds the position of the substring in a string.
+
+```python
+mystring = "one apple, two apples, three apples, four apples"
+
+find_position = mystring.find("apple")
+while find_position != -1:
+    print(find_position)
+    find_position = mystring.find("apple", find_position + 1)
+```
+
+---
+
+## Find
+
+The built-in `find` function finds the position of the substring in a string.
+
+```python
+mystring = "one apple, two apples, three apples, four apples"
+
+find_position = mystring.find("apple")
+while find_position != -1:
+    print(find_position)
+    find_position = mystring.find("apple", find_position + 1)
+```
+
+<pre>
+4
+15
+29
+42
+</pre>
+
+https://docs.python.org/3/library/stdtypes.html#str.find
+
+---
+
 ## String formatting
 
 + Old style
@@ -688,7 +805,7 @@ https://docs.python.org/3/tutorial/inputoutput.html
 
 ---
 
-## What we learned so far
+## What we have learned so far
 
 + How to initialize an empty string/list/dictionary
 
@@ -699,6 +816,8 @@ https://docs.python.org/3/tutorial/inputoutput.html
 + How to use `enumerate` and `zip`
 
 + How to slice a sequence using `[start:stop:step]`
+
++ How to use `split` and `join`
 
 + How to format a string
 
@@ -1027,184 +1146,188 @@ f_out_obx.close()
 
 ## Choice of input file
 
-Imagine Kaningentix didn't have only the file allherbs.knx, but also alldiseases.knx and allforces.knx. Miraculix likes to have a program in which he can decide upon the file to be decomposed.
+Imagine Kaningentix didn't have only the file `allherbs.knx`, but also
+`alldiseases.knx` and `allforces.knx`. Miraculix likes to have a program in
+which he can decide upon the file to be decomposed.
 
+```python
+input_file_name = input("Please specify the input file name: ")
 ```
->>> file_in = input("Which inputfile? ")
-Which inputfile?
 
-```
+Miraculix is then asked to specify the input file name. He typed `allherbs`.
+The string "allherbs" is saved in the variable `input_file_name`.
 
-Miraculix can write then `allherbs` to get the `allherbs.knx` file analyzed.
-
-Remark: In `python3`, `input()` returns a string. When an integer or float number is expected as input, `int(input())` or `float(input())`, respectively, can be used. For an expression, `eval(input())` has to be reverted to.   
-
-<!--
-Remark: In `python2`, `raw_input()` delivers a string, while `input()` considers the input as an expression. In `python3`, `raw_input()` does not exist and `input()` takes over the meaning of the old `raw_input()`. When therefore the input has to considered as an expression, `eval(input())` has to be used.  
--->
-
+https://docs.python.org/3/library/functions.html#input
 
 ---
 
 ## Choice of input file
 
-Imagine now that Miraculix gives a name of a file which does not exist. The program breaks. Therefore, a test can be built in.
+Now Miraculix can interact with the program
 
-<!--
-file=raw_input("Which inputfile? ")
-inp= open(file_in+".knx",'r')
+```python
+input_file_name = input("Please specify the input file name: ")
 
-Errormessage:
-Which inputfile? somethingelse
-Traceback (most recent call last):
-  File "program_space_endline_input", line 8, in <module>
-    inp= open(file+".knx",'r')
-IOError: [Errno 2] No such file or directory: 'somethingelse.knx'
--->
+f_inp = open(input_file_name + ".knx", 'r')
+f_out_asx = open(input_file_name + ".asx", 'w')
+f_out_obx = open(input_file_name + ".obx", 'w')
 
+for line in f_inp:
+
+    if "aster:" in line:
+        herb = line.split()[1]
+        f_out_asx.write(herb + '\n')
+
+    elif "obeli:" in line:
+        herb = line.split()[1]
+        f_out_obx.write(herb + '\n')
+
+f_inp.close()
+f_out_asx.close()
+f_out_obx.close()
 ```
->>> try:
-...   inp = open(file_in+".knx",'r')
->>> except IOError:
-...   print('File cannot be opened:', file_in+".knx")
-...   exit()
+---
 
-```
+## Choice of input file
 
-When a file is given in which does not exist, simply message is given out and the program terminates.
+Imagine now that Miraculix gives a name of a file which does not exist. The
+program breaks. Therefore, a test can be built in.
 
-```
-Which inputfile? somethingelse
-File cannot be opened: somethingelse.knx
+```python
+input_file_name = input("Please specify the input file name: ")
 
-```
-
-<!--
-class B(Exception):
-    pass
-
-class C(B):
-    pass
-
-class D(C):
-    pass
-
-for cls in [B, C, D]:
-    try:
-       raise cls()
-    except D:
-       print("D")
-    except C:
-       print("C")
-    except B:
-       print("B")
--->
-
-
-<!--
-Possible errors:
-ValueError('Please enter a number'-'That was not an integer'), RuntimeError('please indicate your choice with 1 or 2' - 'that was not 1 or 2'), TypeError('passing arguments of wrong type e.g. '2'+2 ), NameError(use a variable before it is created)
--->
-
-A fast look upon other errors:
-
-```
->>> try:
-...    <I would like to try to do something>
->>> except IOError:
-...    print("This is something like 'cannot open'")
->>> except ValueError:
-...    print("Could not convert data to an integer.")
->>> except RuntimeError:
-...    print("you had only choice between 1 and 2 - 3 is not possible")
->>> except TypeError:
-...    print("passing arguments of wrong type e.g. '2' + 2 ")
->>> except NameError:
-...    print("use a variable before it is created")
->>> except:
-...    print("I have no idea which error")
-
+try:
+    f_inp = open(input_file_name + ".knx", 'r')
+except IOError:
+    print("File cannot be opened: " + input_file_name + ".knx")
+    exit()
 ```
 
 ---
 
-## Common part in the name
+## Choice of input file
 
-The only part which is important is the one in front of the ".". Remark that the name of the file is like an array and that only from element "0" until (but not including) the "." is retained.   
+Imagine now that Miraculix gives a name of a file which does not exist. The
+program breaks. Therefore, a test can be built in.
 
+```python
+input_file_name = input("Please specify the input file name: ")
+
+try:
+    f_inp = open(input_file_name + ".knx", 'r')
+except IOError:
+    print("File cannot be opened: " + input_file_name + ".knx")
+    exit()
 ```
->>> if "." in file_in:
-...      file_in = file_in[:file_in.find(".")]
->>> file_in
-'allherbs'
 
+When a file is given in which does not exist, a simple message is given out and
+the program terminates.
+
+<pre>
+Please specify the input file name: something
+File cannot be opened: something.knx
+</pre>
+
+https://docs.python.org/3/tutorial/errors.html#handling-exceptions
+
+---
+
+## File name and extension
+
+In the previous example we have dealt with three files, `allherbs.knx`,
+`allherbs.asx`, and `allherbs.obx`.
+
+The common part in the names of the files is the part in front of the `.`.
+The part after `.` is the file extension.
+
+We can use some simple code to detect the file name and the file extension.
+
+```python
+input_file_name = input("Please specify the input file name: ")
+
+if "." in input_file_name:
+    parts = input_file_name.split('.')
+    input_file_name = '.'.join(parts[:-1])
+```
+
+---
+
+## File name and extension
+
+In the previous example we have dealt with three files, `allherbs.knx`,
+`allherbs.asx`, and `allherbs.obx`.
+
+The common part in the names of the files is the part in front of the `.`.
+The part after `.` is the file extension.
+
+We can use some simple code to detect the file name and the file extension.
+
+```python
+input_file_name = input("Please specify the input file name: ")
+
+if "." in input_file_name:
+    parts = input_file_name.split('.')
+    input_file_name = '.'.join(parts[:-1])
 ```
 
 Using libraries, this can be done nicer:
 
-```
->>> import os
->>> file_in, file_extension= os.path.splitext(file_in)
->>> file_in
-'allherbs'
->>> file_extension
-'.knx'
-
+```python
+import os
+input_file_name = input("Please specify the input file name: ")
+input_file_name, input_file_extension= os.path.splitext(input_file_name)
 ```
 
 ---
 
-## Reading until end of line
-
-It makes not much sense to use the program above, since e.g. the herbs should have names which have all the exact same length. In the example of Miraculix, each line (and therefore the name of the herb) ends on another space or on a hard enter.
-
-<!--
-     if (line[:5]) == "aster":
-            outas.write(line[7:]+"\n")
-     if (line[:5]) == "obeli":
-            outob.write(line[7:]+"\n")
--->
+## Example from Back in the Day
 
 ```
->>>     if line[:5] == "aster":
-...           outas.write(line[7:])
->>>     if line[:5] == "obeli":
-...           outob.write(line[7:])
-	       
-```
-
----
-
-## Reading until space
-
-In the program above, the name of the Celt is read based upon the number of characters - which meant that Asterix was abbreviated to `aster` and Obelix to `obeli`. It would have been better to read until the first space. 
-
-```
->>>     spacepos = line.find(' ')
->>>     if line[:spacepos-1] == "asterix":
-...           outas.write(line[spacepos+1:])
->>>     if line[:spacepos-1] == "obelix":
-...           outob.write(line[spacepos+1:])
-
+$ cat allherbs.knx
+Creator of file: Kaningentix
+First test
+Herbs Celts
+aster: herb1
+obeli: herb2
+aster: herb3
+aster: herb4
+obeli: herb5
 ```
 
 ---
 
 ## Example today
 
-In this way, the input could be
+It would be nicer to have the full names in the file.
 
 ```
 $ cat allherbs_2.knx
 Creator of file: Kaningentix
 First test
 Herbs Celts
-asterix: petraoleum
+asterix: petroleum
 obelix: kerosine
 asterix: cyanine
 asterix: diesel
-obelix: lpg
+obelix: lpgas
+```
 
+---
+
+## Example today
+
+It would be nicer to have the full names in the file.
+
+```
+$ cat allherbs_2.knx
+Creator of file: Kaningentix
+First test
+Herbs Celts
+asterix: petroleum
+obelix: kerosine
+asterix: cyanine
+asterix: diesel
+obelix: lpgas
 ```
 
 ... and Miraculix will get ...
@@ -1214,14 +1337,12 @@ $ cat allherbs_2.asx
 petraoleum
 cyanine
 diesel
-
 ```
 
 ```
 $ cat allherbs_2.obx
 kerosine
-lpg
-
+lpgas
 ```
 
 ---
@@ -1262,11 +1383,6 @@ It should be known that `inp.write()` only works when a `string` is written out:
 
 or
 
-<!--
->>> inp.write("%d \n" % number)
--->
-
-
 ```
 >>> inp.write("%d \n" % number)
 ```
@@ -1302,24 +1418,6 @@ The total sum of his weapons is given by `readlines()` followed by a `split()` o
 ```
 
 `split()`, which standard separates parts of a line by a space, gives access to a list. Remark that `line.split()` gives access to a list of strings.
-
----
-
-## Join
-
-The opposite of `split()` is somehow `join()`: when `l` is a list of words, `" ".join(l)` gives a a sentence in which the words are separated by spaces.   
-
-<!--
-' '.join(l) is only possible for strings!
--->
-
-```
->>> fourlist=[5, 56, 24, 22]
->>> str_of_numbers=' '.join(str(x) for x in fourlist)
->>> print(str_of_numbers)
-5 56 24 22
-
-```
 
 ---
 
