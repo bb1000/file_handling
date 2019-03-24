@@ -1573,7 +1573,7 @@ coded a small test:
 ```python
 import sys
 
-if len(sys.argv) != 3 :
+if len(sys.argv) != 3:
    print ("Usage: python healthy_herb.py color place")
    exit()
 ```
