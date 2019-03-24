@@ -1489,49 +1489,123 @@ that `line.split()` gives access to a list of strings.
 
 ---
 
-## The sys-module and some easy way of input
+## The sys module and some easy way of input
 
-`argv` contains the vector of arguments passed to a program via the command line. `argv[0]` is the filename of the program, `argv[1]` is then the first argument given, `argv[2]` the second etc. `argv` has to be imported from the module `sys`.
+`sys.argv` contains the vector of arguments passed to a program via the command
+line.
+
++ `sys.argv`[0] is the filename of the program.
++ `sys.argv`[1] is the first argument given.
++ `sys.argv`[2] the second etc.
+
+---
+
+## The sys module and some easy way of input
+
+`sys.argv` contains the vector of arguments passed to a program via the command
+line.
+
++ `sys.argv`[0] is the filename of the program.
++ `sys.argv`[1] is the first argument given.
++ `sys.argv`[2] the second etc.
 
 Imagine that a program `program_test.py` contains two lines of code:
 
-```
-from sys import argv
-print(argv)
+```python
+import sys
+print(sys.argv)
 ```
 
-The output of `python program_test.py` is then
+---
+
+## The sys module and some easy way of input
+
+`sys.argv` contains the vector of arguments passed to a program via the command
+line.
+
++ `sys.argv`[0] is the filename of the program.
++ `sys.argv`[1] is the first argument given.
++ `sys.argv`[2] the second etc.
+
+Imagine that a program `program_test.py` contains two lines of code:
+
+```python
+import sys
+print(sys.argv)
+```
+
+The output of `python program_test.py a b` is then
 
 ```
 ['program_test.py', 'a', 'b']
 ```
 
-argv[0] contains then the name `program_test.py`, argv[1] and argv[2] contain `a` and `b`, respectively.
+`sys.argv`[0] contains then the name `program_test.py`, `sys.argv`[1] and
+`sys.argv`[2] contain `a` and `b`, respectively.
 
 ---
 
 ## The sys-module and some safe way of input
 
-Miraculix made a program `healthy_herb.py` which says whether or not a herb is safe to be eaten or not. As input parameters, the program needs to know the color of the herb as well as its sites in the forest:
+Miraculix made a program `healthy_herb.py` which says whether or not a herb is
+safe to be eaten or not.
+
+As input parameters, the program needs to know the color of the herb as well as
+its sites in the forest:
 
 `python healthy_herb.py green river`
 
-To make sure that his collaborators provide these from the beginning, Miraculix hard coded a small test:       
+---
 
-```
-from sys import argv
-if len(argv) != 3 :
+## The sys-module and some safe way of input
+
+Miraculix made a program `healthy_herb.py` which says whether or not a herb is
+safe to be eaten or not.
+
+As input parameters, the program needs to know the color of the herb as well as
+its sites in the forest:
+
+`python healthy_herb.py green river`
+
+To make sure that his collaborators provide these from the beginning, Miraculix
+coded a small test:       
+
+```python
+import sys
+
+if len(sys.argv) != 3 :
    print ("Usage: python healthy_herb.py color place")
    exit()
+```
 
+---
+
+## The sys-module and some safe way of input
+
+Miraculix made a program `healthy_herb.py` which says whether or not a herb is
+safe to be eaten or not.
+
+As input parameters, the program needs to know the color of the herb as well as
+its sites in the forest:
+
+`python healthy_herb.py green river`
+
+To make sure that his collaborators provide these from the beginning, Miraculix
+coded a small test:       
+
+```python
+import sys
+
+if len(sys.argv) != 3:
+   print ("Usage: python healthy_herb.py color place")
+   exit()
 ```
 
 Of course, in the code, the arguments still have to be defined:
 
 ```
-color = argv[1]
-place = argv[2]
-
+color = sys.argv[1]
+place = sys.argv[2]
 ```
 
 ---
@@ -1543,4 +1617,3 @@ place = argv[2]
 "Python for Informatics", Charles Severance, 2013, http://www.pythonlearn.com/book.php#python-for-informatics
 
 http://www.pythonforbeginners.com
-
