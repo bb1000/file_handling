@@ -1198,6 +1198,7 @@ input_file_name = input("Please specify the input file name: ")
 
 try:
     f_inp = open(input_file_name + ".knx", 'r')
+
 except IOError:
     print("File cannot be opened: " + input_file_name + ".knx")
     exit()
@@ -1215,6 +1216,7 @@ input_file_name = input("Please specify the input file name: ")
 
 try:
     f_inp = open(input_file_name + ".knx", 'r')
+
 except IOError:
     print("File cannot be opened: " + input_file_name + ".knx")
     exit()
@@ -1237,8 +1239,8 @@ https://docs.python.org/3/tutorial/errors.html#handling-exceptions
 In the previous example we have dealt with three files, `allherbs.knx`,
 `allherbs.asx`, and `allherbs.obx`.
 
-The common part in the names of the files is the part in front of the `.`.
-The part after `.` is the file extension.
+The common part in the names of the files is the part in front of the `.`
+delimiter.  The part after `.` is the file extension.
 
 We can use some simple code to detect the file name and the file extension.
 
@@ -1257,8 +1259,8 @@ if "." in input_file_name:
 In the previous example we have dealt with three files, `allherbs.knx`,
 `allherbs.asx`, and `allherbs.obx`.
 
-The common part in the names of the files is the part in front of the `.`.
-The part after `.` is the file extension.
+The common part in the names of the files is the part in front of the `.`
+delimiter.  The part after `.` is the file extension.
 
 We can use some simple code to detect the file name and the file extension.
 
@@ -1275,7 +1277,7 @@ Using libraries, this can be done nicer:
 ```python
 import os
 input_file_name = input("Please specify the input file name: ")
-input_file_name, input_file_extension= os.path.splitext(input_file_name)
+input_file_name, input_file_extension = os.path.splitext(input_file_name)
 ```
 
 ---
@@ -1349,45 +1351,62 @@ lpgas
 
 ## Some other type of printing
 
-We know already
+We know that the following code works
 
-```
->>> file_in = "obelix_dog"
->>> inp = open(file_in, 'w')
->>> inp.write("Idefix")
->>> inp.close()
-
-```
-
-It is also possible to say
-
-```
->>> inp = open(file_in, 'w')
->>> print("Idefix", file=inp)
->>> inp.close()
-
+```python
+file_name = "obelix_dog"
+my_file_obj = open(file_name, 'w')
+my_file_obj.write("Idefix")
+my_file_obj.close()
 ```
 
 ---
 
 ## Some other type of printing
 
-It should be known that `inp.write()` only works when a `string` is written out:
+We know that the following code works
 
-```
->>> file_in = "obelix_wporcs"
->>> inp = open(file_in, 'w')
->>> number = 5
->>> inp.write(str(number))
-```
-
-or
-
-```
->>> inp.write("%d \n" % number)
+```python
+file_name = "obelix_dog"
+my_file_obj = open(file_name, 'w')
+my_file_obj.write("Idefix")
+my_file_obj.close()
 ```
 
-Finally, the `open` function can have three options: read ('r'), write ('w') - and append ('a'). In the latter case, the extra output is written at the end of the file.  
+It is also possible to say
+
+```python
+file_name = "obelix_dog"
+my_file_obj = open(file_name, 'w')
+print("Idefix", file=my_file_obj)
+my_file_obj.close()
+```
+
+---
+
+## Some other type of printing
+
+It should be known that we should provide a string to `write`
+
+```python
+file_name = "obelix_wprocs"
+file_obj = open(file_name, 'w')
+
+number = 5
+file_obj.write(str(number))
+
+file_obj.close()
+```
+
+String formatting is also useful
+
+```python
+file_obj.write("{:d}\n".format(number))
+```
+
+Finally, the `open` function can have three options: read ('r'), write ('w') -
+and append ('a'). In the "append" mode, the extra output is written at the end
+of the file.
 
 ---
 
@@ -1401,23 +1420,72 @@ knife: 4
 spear: 2
 arrow: 3
 fist: 2
-
 ```
 
-The total sum of his weapons is given by `readlines()` followed by a `split()` of each line.
+---
+
+## How to read strings and numbers?
+
+In a file, Asterix keeps tracks of his weapons:
 
 ```
->>> inp = open("weapons.asx", 'r')
->>> lines = inp.readlines()
->>> number = 0
->>> for line in lines:
-...     number = number + int(line.split()[1])
->>> print(number)
+$ cat weapons.asx
+knife: 4
+spear: 2
+arrow: 3
+fist: 2
+```
+
+The total sum of his weapons is given by `readlines()` followed by a `split()`
+of each line.
+
+```python
+f_inp = open("weapons.asx", 'r')
+lines = f_inp.readlines()
+f_inp.close()
+
+number = 0
+for line in lines:
+    number += int(line.split()[1])
+
+print(number)
+```
+
+---
+
+## How to read strings and numbers?
+
+In a file, Asterix keeps tracks of his weapons:
+
+```
+$ cat weapons.asx
+knife: 4
+spear: 2
+arrow: 3
+fist: 2
+```
+
+The total sum of his weapons is given by `readlines()` followed by a `split()`
+of each line.
+
+```python
+f_inp = open("weapons.asx", 'r')
+lines = f_inp.readlines()
+f_inp.close()
+
+number = 0
+for line in lines:
+    number += int(line.split()[1])
+
+print(number)
+```
+
+<pre>
 11
+</pre>
 
-```
-
-`split()`, which standard separates parts of a line by a space, gives access to a list. Remark that `line.split()` gives access to a list of strings.
+`split` separates parts of a line by a space, and save them in a list. Remark
+that `line.split()` gives access to a list of strings.
 
 ---
 

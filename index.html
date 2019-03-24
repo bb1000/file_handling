@@ -3,8 +3,11 @@
   <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif|Yanone+Kaffeesatz|Ubuntu+Mono:400,700,400italic">
-    <style>
+
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
       body {
         font-family: 'Droid Serif';
@@ -1334,6 +1337,7 @@ input_file_name = input(&#34;Please specify the input file name: &#34;)
 
 try:
     f_inp = open(input_file_name + &#34;.knx&#34;, &#39;r&#39;)
+
 except IOError:
     print(&#34;File cannot be opened: &#34; + input_file_name + &#34;.knx&#34;)
     exit()
@@ -1351,6 +1355,7 @@ input_file_name = input(&#34;Please specify the input file name: &#34;)
 
 try:
     f_inp = open(input_file_name + &#34;.knx&#34;, &#39;r&#39;)
+
 except IOError:
     print(&#34;File cannot be opened: &#34; + input_file_name + &#34;.knx&#34;)
     exit()
@@ -1373,8 +1378,8 @@ https://docs.python.org/3/tutorial/errors.html#handling-exceptions
 In the previous example we have dealt with three files, `allherbs.knx`,
 `allherbs.asx`, and `allherbs.obx`.
 
-The common part in the names of the files is the part in front of the `.`.
-The part after `.` is the file extension.
+The common part in the names of the files is the part in front of the `.`
+delimiter.  The part after `.` is the file extension.
 
 We can use some simple code to detect the file name and the file extension.
 
@@ -1393,8 +1398,8 @@ if &#34;.&#34; in input_file_name:
 In the previous example we have dealt with three files, `allherbs.knx`,
 `allherbs.asx`, and `allherbs.obx`.
 
-The common part in the names of the files is the part in front of the `.`.
-The part after `.` is the file extension.
+The common part in the names of the files is the part in front of the `.`
+delimiter.  The part after `.` is the file extension.
 
 We can use some simple code to detect the file name and the file extension.
 
@@ -1411,7 +1416,7 @@ Using libraries, this can be done nicer:
 ```python
 import os
 input_file_name = input(&#34;Please specify the input file name: &#34;)
-input_file_name, input_file_extension= os.path.splitext(input_file_name)
+input_file_name, input_file_extension = os.path.splitext(input_file_name)
 ```
 
 ---
@@ -1485,45 +1490,62 @@ lpgas
 
 ## Some other type of printing
 
-We know already
+We know that the following code works
 
-```
-&gt;&gt;&gt; file_in = &#34;obelix_dog&#34;
-&gt;&gt;&gt; inp = open(file_in, &#39;w&#39;)
-&gt;&gt;&gt; inp.write(&#34;Idefix&#34;)
-&gt;&gt;&gt; inp.close()
-
-```
-
-It is also possible to say
-
-```
-&gt;&gt;&gt; inp = open(file_in, &#39;w&#39;)
-&gt;&gt;&gt; print(&#34;Idefix&#34;, file=inp)
-&gt;&gt;&gt; inp.close()
-
+```python
+file_name = &#34;obelix_dog&#34;
+my_file_obj = open(file_name, &#39;w&#39;)
+my_file_obj.write(&#34;Idefix&#34;)
+my_file_obj.close()
 ```
 
 ---
 
 ## Some other type of printing
 
-It should be known that `inp.write()` only works when a `string` is written out:
+We know that the following code works
 
-```
-&gt;&gt;&gt; file_in = &#34;obelix_wporcs&#34;
-&gt;&gt;&gt; inp = open(file_in, &#39;w&#39;)
-&gt;&gt;&gt; number = 5
-&gt;&gt;&gt; inp.write(str(number))
-```
-
-or
-
-```
-&gt;&gt;&gt; inp.write(&#34;%d \n&#34; % number)
+```python
+file_name = &#34;obelix_dog&#34;
+my_file_obj = open(file_name, &#39;w&#39;)
+my_file_obj.write(&#34;Idefix&#34;)
+my_file_obj.close()
 ```
 
-Finally, the `open` function can have three options: read (&#39;r&#39;), write (&#39;w&#39;) - and append (&#39;a&#39;). In the latter case, the extra output is written at the end of the file.  
+It is also possible to say
+
+```python
+file_name = &#34;obelix_dog&#34;
+my_file_obj = open(file_name, &#39;w&#39;)
+print(&#34;Idefix&#34;, file=my_file_obj)
+my_file_obj.close()
+```
+
+---
+
+## Some other type of printing
+
+It should be known that we should provide a string to `write`
+
+```python
+file_name = &#34;obelix_wprocs&#34;
+file_obj = open(file_name, &#39;w&#39;)
+
+number = 5
+file_obj.write(str(number))
+
+file_obj.close()
+```
+
+String formatting is also useful
+
+```python
+file_obj.write(&#34;{:d}\n&#34;.format(number))
+```
+
+Finally, the `open` function can have three options: read (&#39;r&#39;), write (&#39;w&#39;) -
+and append (&#39;a&#39;). In the &#34;append&#34; mode, the extra output is written at the end
+of the file.  
 
 ---
 
@@ -1537,23 +1559,72 @@ knife: 4
 spear: 2
 arrow: 3
 fist: 2
-
 ```
 
-The total sum of his weapons is given by `readlines()` followed by a `split()` of each line.
+---
+
+## How to read strings and numbers?
+
+In a file, Asterix keeps tracks of his weapons:
 
 ```
-&gt;&gt;&gt; inp = open(&#34;weapons.asx&#34;, &#39;r&#39;)
-&gt;&gt;&gt; lines = inp.readlines()
-&gt;&gt;&gt; number = 0
-&gt;&gt;&gt; for line in lines:
-...     number = number + int(line.split()[1])
-&gt;&gt;&gt; print(number)
+$ cat weapons.asx
+knife: 4
+spear: 2
+arrow: 3
+fist: 2
+```
+
+The total sum of his weapons is given by `readlines()` followed by a `split()`
+of each line.
+
+```python
+f_inp = open(&#34;weapons.asx&#34;, &#39;r&#39;)
+lines = f_inp.readlines()
+f_inp.close()
+
+number = 0
+for line in lines:
+    number += int(line.split()[1])
+
+print(number)
+```
+
+---
+
+## How to read strings and numbers?
+
+In a file, Asterix keeps tracks of his weapons:
+
+```
+$ cat weapons.asx
+knife: 4
+spear: 2
+arrow: 3
+fist: 2
+```
+
+The total sum of his weapons is given by `readlines()` followed by a `split()`
+of each line.
+
+```python
+f_inp = open(&#34;weapons.asx&#34;, &#39;r&#39;)
+lines = f_inp.readlines()
+f_inp.close()
+
+number = 0
+for line in lines:
+    number += int(line.split()[1])
+
+print(number)
+```
+
+&lt;pre&gt;
 11
+&lt;/pre&gt;
 
-```
-
-`split()`, which standard separates parts of a line by a space, gives access to a list. Remark that `line.split()` gives access to a list of strings.
+`split` separates parts of a line by a space, and save them in a list. Remark
+that `line.split()` gives access to a list of strings.
 
 ---
 
